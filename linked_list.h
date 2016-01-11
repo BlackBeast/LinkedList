@@ -1,12 +1,14 @@
-typedef struct{
-  int value;
-  void *next;
+typedef struct element{
+  void *value;
+  struct element *next;
 } Element;
 
 typedef struct{
+  Element *first_element;
+  Element *last_element;
   int length;
-  Element *tail;
-  Element *head;
 }LinkedList;
 
 LinkedList createList(void);
+
+int add_to_list(LinkedList *,void *);
