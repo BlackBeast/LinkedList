@@ -27,6 +27,18 @@ void test_for_getting_the_first_element_from_the_list(){
   assert(value == 2);
 };
 
+void test_for_getting_the_first_element_from_the_list_using_characters(){
+  LinkedList list = createList();
+  char char1 = 'a';
+  char char2 = 'b';
+  add_to_list(&list,&char1);
+  char value = *(char *)get_first_element(list);
+  assert(value == 'a');
+  add_to_list(&list,&char2);
+  char result = *(char *)get_first_element(list);
+  assert(result == 'a');
+};
+
 void test_for_getting_the_last_element_from_the_list(){
   LinkedList list = createList();
   int num1 = 2;
@@ -35,4 +47,16 @@ void test_for_getting_the_last_element_from_the_list(){
   add_to_list(&list,&num2);
   int value = *(int*)get_last_element(list);
   assert(value == 3);
+};
+
+void test_for_getting_the_last_element_from_the_list_using_characters(){
+  LinkedList list = createList();
+  char char1 = 'a';
+  char char2 = 'b';
+  add_to_list(&list,&char1);
+  char value = *(char *)get_last_element(list);
+  assert(value == 'a');
+  add_to_list(&list,&char2);
+  char result = *(char *)get_last_element(list);
+  assert(result == 'b');
 };
