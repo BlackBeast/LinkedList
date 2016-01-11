@@ -32,3 +32,11 @@ void *get_first_element(LinkedList linked_list){
 void *get_last_element(LinkedList linked_list){
   return linked_list.last_element ->value;
 };
+
+void forEach(LinkedList list, ElementProcessor func){
+  Element *ele = list.first_element;
+  while(ele != NULL){
+    func(ele ->value);
+    ele = ele -> next;
+  }
+};

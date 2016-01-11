@@ -60,3 +60,50 @@ void test_for_getting_the_last_element_from_the_list_using_characters(){
   char result = *(char *)get_last_element(list);
   assert(result == 'b');
 };
+
+void square_of(void* item){
+  *(int*)item = (*(int*)item)*(*(int*)item);
+};
+
+
+void increment(void *value){
+	(*(int *)value)++;
+};
+
+void test_for_checking_forEach_using_a_traverse_function(){
+  LinkedList list = createList();
+  int num1 = 2;
+  int num2 = 4;
+  int num3 = 6;
+  int num4 = 8;
+  add_to_list(&list,&num1);
+  add_to_list(&list,&num2);
+  add_to_list(&list,&num3);
+  add_to_list(&list,&num4);
+  forEach(list,&square_of);
+
+	assert(*(int *)get_first_element(list) == 4);
+	assert(*(int *)get_last_element(list) == 64);
+
+	forEach(list,&increment);
+
+	assert(*(int *)get_first_element(list) == 5);
+	assert(*(int *)get_last_element(list) == 65);
+};
+
+void test_for_checking_forEach_using_a_traverse_function_using_characters(){
+  LinkedList list = createList();
+  char num1 = 'a';
+  char num2 = 'b';
+  char num3 = 'c';
+  char num4 = 'd';
+  add_to_list(&list,&num1);
+  add_to_list(&list,&num2);
+  add_to_list(&list,&num3);
+  add_to_list(&list,&num4);
+
+	forEach(list,&increment);
+
+	assert(*(char *)get_first_element(list) == 'b');
+	assert(*(char *)get_last_element(list) == 'e');
+};
