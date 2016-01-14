@@ -93,17 +93,35 @@ void test_for_checking_forEach_using_a_traverse_function(){
 
 void test_for_checking_forEach_using_a_traverse_function_using_characters(){
   LinkedList list = createList();
-  char num1 = 'a';
-  char num2 = 'b';
-  char num3 = 'c';
-  char num4 = 'd';
-  add_to_list(&list,&num1);
-  add_to_list(&list,&num2);
-  add_to_list(&list,&num3);
-  add_to_list(&list,&num4);
+  char char1 = 'a';
+  char char2 = 'b';
+  char char3 = 'c';
+  char char4 = 'd';
+  add_to_list(&list,&char1);
+  add_to_list(&list,&char2);
+  add_to_list(&list,&char3);
+  add_to_list(&list,&char4);
 
 	forEach(list,&increment);
 
 	assert(*(char *)get_first_element(list) == 'b');
 	assert(*(char *)get_last_element(list) == 'e');
+};
+
+void test_for_checking_wheather_we_are_getting_the_element_at_the_given_position(){
+  LinkedList list = createList();
+  int num1 = 2;
+  int num2 = 4;
+  int num3 = 6;
+  int num4 = 7;
+  add_to_list(&list,&num1);
+  add_to_list(&list,&num2);
+  add_to_list(&list,&num3);
+  add_to_list(&list,&num4);
+  assert((*(int*)getElementAt(list,0)) == 2);
+  assert((*(int*)getElementAt(list,2)) == 6);
+  assert((*(int*)getElementAt(list,3)) == 7);
+  assert((*(int*)getElementAt(list,1)) == 4);
+  assert((getElementAt(list,6)) == NULL);
+  assert((getElementAt(list,-2)) == NULL);
 };

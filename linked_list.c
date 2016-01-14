@@ -40,3 +40,11 @@ void forEach(LinkedList list, ElementProcessor func){
     ele = ele -> next;
   }
 };
+
+void * getElementAt(LinkedList list, int position){
+  if(position < 0 || position > list.length - 1) return NULL;
+  for (int i = 0; i < position; i++) {
+    list.first_element = list.first_element -> next;
+  };
+  return list.first_element -> value;
+};
