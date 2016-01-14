@@ -101,3 +101,14 @@ LinkedList filter(LinkedList list, MatchFunc func, void *hint){
   };
   return filtered_list;
 };
+
+LinkedList reverse(LinkedList list){
+  LinkedList reversed = createList();
+  void *arrayUtil = calloc(list.length,8);
+  void **array = arrayUtil;
+  asArray(list, array, list.length);
+  for(int i = list.length-1; i >= 0; i--){
+    add_to_list(&reversed, array[i]);
+  };
+  return reversed;
+};

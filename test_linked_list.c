@@ -198,3 +198,22 @@ void test_for_filtering_the_elements_in_the_list(){
   assert(*(int *)filtered_list.last_element->value == 6);
   assert(filtered_list.length == 3);
 }
+
+void test_for_reversing_the_list_without_changing_the_original_list(){
+  LinkedList list = createList();
+  int array[] = {1,2,3,4,5,6};
+  for(int i=0;i<6;i++){
+    add_to_list(&list,&array[i]);
+  }
+  LinkedList reversed = reverse(list);
+  assert(reversed.first_element->value == list.last_element->value);
+  assert(reversed.last_element->value == list.first_element->value);
+  int expected_array[]={6,5,4,3,2,1};
+  Element *ele = reversed.first_element;
+  for (int i = 0; i < reversed.length; i++) {
+    assert(*(int*)ele->value == expected_array[i]);
+    ele = ele->next;
+  }
+  assert(reversed.length == 6);
+  assert(list.length == 6);
+};
