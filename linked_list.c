@@ -125,3 +125,12 @@ LinkedList map(LinkedList list, ConvertFunc func, void *hint){
   };
   return dest;
 };
+
+void *reduce(LinkedList list, Reducer func, void *hint, void *initialValue){
+  Element *ele = list.first_element;
+  for(int i = 0; i < list.length; i++){
+    initialValue = func(hint, initialValue, ele->value);
+    ele = ele->next;
+  };
+  return initialValue;
+};

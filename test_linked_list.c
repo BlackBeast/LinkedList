@@ -243,3 +243,19 @@ void test_for_maping_the_list(){
 
   assert(mapped.length == 7);
 }
+
+void *add_all(void* hint, void* previousItem, void* item){
+  *(int *)item = *(int *)item + *(int *)previousItem;
+  return item;
+};
+
+void test_for_reducing_the_list(){
+  LinkedList list = createList();
+  int array[] = {5,6,7,8,9,10};
+  for(int i=0;i<6;i++){
+    add_to_list(&list,&array[i]);
+  }
+  int hint = 0;
+  int redused_output = *(int *)reduce(list, &add_all, &hint, &hint);
+  assert(redused_output == 45);
+}
