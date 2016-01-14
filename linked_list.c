@@ -80,3 +80,13 @@ void * deleteElementAt(LinkedList *list, int position){
     free(deletedElement);
     return deletedElement->value;
 };
+
+int asArray(LinkedList list, void ** array, int maxElements){
+  int limit = (maxElements < list.length) ? maxElements : list.length;
+  Element *ele = list.first_element;
+  for(int i = 0;i < limit; i++){
+    array[i] = ele->value;
+    ele = ele->next;
+  };
+  return limit;
+};

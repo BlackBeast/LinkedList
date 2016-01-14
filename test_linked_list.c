@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "linked_list.h"
 
@@ -157,4 +158,25 @@ void test_for_deleting_the_element_which_is_in_the_index_provided(){
   assert(*(int *)list.first_element->value == 6);
   assert(*(int *)list.last_element->value == 6);
   assert(list.length == 1);
+};
+
+void test_for_asArray(){
+  LinkedList list = createList();
+  int array[] = {1,2,3,4,5,6};
+  for(int i=0;i<6;i++){
+    add_to_list(&list,&array[i]);
+  }
+  void *dest1 = (int *)calloc(6,8);
+  int no_of_ele_added_1 = asArray(list,dest1,6);
+  for(int i=0;i<no_of_ele_added_1;i++){
+    assert(**(int**)dest1 == array[i]);
+    dest1 += 8;
+  }
+
+  void *dest2 = (int *)calloc(3,8);
+  int no_of_ele_added_2 = asArray(list,dest1,6);
+  for(int i=0;i<no_of_ele_added_2;i++){
+    assert(**(int**)dest1 == array[i]);
+    dest1 += 8;
+  }
 };
