@@ -90,3 +90,14 @@ int asArray(LinkedList list, void ** array, int maxElements){
   };
   return limit;
 };
+
+LinkedList filter(LinkedList list, MatchFunc func, void *hint){
+  LinkedList filtered_list = createList();
+  Element *ele = list.first_element;
+  for(int i=0; i<list.length; i++){
+    if(func(hint, ele->value))
+      add_to_list(&filtered_list, ele->value);
+    ele = ele->next;
+  };
+  return filtered_list;
+};

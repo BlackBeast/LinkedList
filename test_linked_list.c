@@ -180,3 +180,21 @@ void test_for_asArray(){
     dest1 += 8;
   }
 };
+
+int divisibleByHint(void *hint, void *item){
+  return  *(int *)item % *(int *)hint == 0;
+};
+
+void test_for_filtering_the_elements_in_the_list(){
+  LinkedList list = createList();
+  int array[] = {1,2,3,4,5,6};
+  for(int i=0;i<6;i++){
+    add_to_list(&list,&array[i]);
+  }
+  int hint = 2;
+  LinkedList filtered_list = filter(list, &divisibleByHint, &hint);
+  assert(*(int *)filtered_list.first_element->value == 2);
+  assert(*(int *)filtered_list.first_element->next->value == 4);
+  assert(*(int *)filtered_list.last_element->value == 6);
+  assert(filtered_list.length == 3);
+}
