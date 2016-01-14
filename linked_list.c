@@ -48,3 +48,11 @@ void * getElementAt(LinkedList list, int position){
   };
   return list.first_element -> value;
 };
+
+int indexOf(LinkedList list, void *element){
+  for (int i = 0; i < list.length; i++) {
+    if(list.first_element ->value == element) return i;
+    list.first_element = list.first_element -> next;
+  };
+  return -1;
+};

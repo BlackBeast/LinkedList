@@ -125,3 +125,18 @@ void test_for_checking_wheather_we_are_getting_the_element_at_the_given_position
   assert((getElementAt(list,6)) == NULL);
   assert((getElementAt(list,-2)) == NULL);
 };
+
+void test_for_checking_wheather_we_are_getting_the_position_of_the_given_element(){
+  LinkedList list = createList();
+  int num1 = 2;
+  int num2 = 4;
+  int num3 = 6;
+  int num4 = 7;
+  add_to_list(&list,&num1);
+  add_to_list(&list,&num2);
+  add_to_list(&list,&num3);
+  assert((indexOf(list,&num1)) == 0);
+  assert((indexOf(list,&num3)) == 2);
+  assert((indexOf(list,&num4)) == -1);
+  assert((indexOf(list,&num2)) == 1);
+};
