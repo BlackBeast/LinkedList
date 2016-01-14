@@ -217,3 +217,29 @@ void test_for_reversing_the_list_without_changing_the_original_list(){
   assert(reversed.length == 6);
   assert(list.length == 6);
 };
+
+void subtractHint(void* hint, void* sourceItem, void* destinationItem){
+  *(int *)destinationItem = *(int *)sourceItem - *(int *)hint;
+};
+
+void test_for_maping_the_list(){
+  LinkedList list = createList();
+  int array[] = {4,5,6,7,8,9,10};
+  for(int i=0;i<7;i++){
+    add_to_list(&list,&array[i]);
+  }
+  int hint = 2;
+  LinkedList mapped = map(list, &subtractHint, &hint);
+  assert(*(int *)mapped.first_element->value == 2);
+  assert(*(int *)mapped.first_element->next->value == 3);
+  assert(*(int *)mapped.last_element->value == 8);
+
+  int expected_array[]={2,3,4,5,6,7,8};
+  Element *ele = mapped.first_element;
+  for (int i = 0; i < mapped.length; i++) {
+    assert(*(int*)ele->value == expected_array[i]);
+    ele = ele->next;
+  }
+
+  assert(mapped.length == 7);
+}

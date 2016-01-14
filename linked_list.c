@@ -112,3 +112,16 @@ LinkedList reverse(LinkedList list){
   };
   return reversed;
 };
+
+LinkedList map(LinkedList list, ConvertFunc func, void *hint){
+  Element *element = list.first_element;
+  LinkedList dest = createList();
+  for(int i = 0; i < list.length; i++){
+    void *ele;
+    ele = (void *)malloc(4);
+    func(hint, element->value, ele);
+    element = element->next;
+    add_to_list(&dest, ele);
+  };
+  return dest;
+};
