@@ -56,3 +56,27 @@ int indexOf(LinkedList list, void *element){
   };
   return -1;
 };
+
+void * deleteElementAt(LinkedList *list, int position){
+  if(position > list->length || position < 0) return NULL;
+    Element *element = list->first_element;
+    Element *deletedElement;
+    if(position == 0) {
+      deletedElement = list->first_element;
+      list->first_element = list->first_element->next;
+    }else{
+      for(int i = 0;i < position - 1; i++){
+        element = element->next;
+      };
+      if(position == list->length-1){
+        deletedElement = element->next;
+        list->last_element = element;
+      }else{
+        deletedElement = element->next;
+        element->next = element->next->next;
+      }
+    }
+    list->length--;
+    free(deletedElement);
+    return deletedElement->value;
+};

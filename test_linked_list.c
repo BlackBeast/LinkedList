@@ -140,3 +140,21 @@ void test_for_checking_wheather_we_are_getting_the_position_of_the_given_element
   assert((indexOf(list,&num4)) == -1);
   assert((indexOf(list,&num2)) == 1);
 };
+
+void test_for_deleting_the_element_which_is_in_the_index_provided(){
+  LinkedList list = createList();
+  int num1 = 2;
+  int num2 = 4;
+  int num3 = 6;
+  int num4 = 7;
+  add_to_list(&list,&num1);
+  add_to_list(&list,&num2);
+  add_to_list(&list,&num3);
+  add_to_list(&list,&num4);
+  assert((*(int*)deleteElementAt(&list,0)) == 2);
+  assert((*(int*)deleteElementAt(&list,2)) == 7);
+  assert((*(int*)deleteElementAt(&list,0)) == 4);
+  assert(*(int *)list.first_element->value == 6);
+  assert(*(int *)list.last_element->value == 6);
+  assert(list.length == 1);
+};
